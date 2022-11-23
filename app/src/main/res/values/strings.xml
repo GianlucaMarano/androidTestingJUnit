@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestingApp</string>
+    <string name="registration">Registrazione</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="confirm_pw">Conferma password</string>
+    <string name="confirm">conferma</string>
+    <string name="registration_error">L\'username o la password non rispettano le regole di registrazione</string>
+</resources>

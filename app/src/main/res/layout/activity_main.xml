@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:padding="25dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration"
+        android:textSize="34sp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:layout_marginBottom="15dp"
+        />
+
+    <EditText android:id="@+id/username_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/username"
+        android:layout_marginBottom="15dp"
+        android:autofillHints="username"
+        android:inputType="text"
+        />
+
+
+    <EditText android:id="@+id/password_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:autofillHints="password"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText android:id="@+id/pw_confirm_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="@string/confirm_pw"
+        android:autofillHints="password" />
+
+    <Button android:id="@+id/registration_btn_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"/>
+
+    <TextView android:id="@+id/registration_error_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/registration_error"
+        android:textColor="@color/design_default_color_error"
+        android:visibility="invisible"
+        />
+
+</LinearLayout>
