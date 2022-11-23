@@ -2,6 +2,7 @@ package com.example.testingapp
 
 
 import com.google.common.truth.Truth.assertThat
+import org.junit.Before
 import org.junit.Test
 
 class RegistrationUtilTest {
@@ -22,33 +23,52 @@ class RegistrationUtilTest {
      * La registrazione va a buon fine se...
      * ...username corretto, pw e pwconfirm corretti
      */
-    val ru = RegistrationUtil()
+    //lateinit indica che la variabile verrà successivamente inizializzata
+    private lateinit var ru : RegistrationUtil
 
-    @Test
+    @Before //annotazione necessaria per eseguire questo metodo prima dei test
+    fun setup(){
+        ru = RegistrationUtil() //inizializzazione di RegistrationUtil
+    }
+
+    /**
+     * Controllo che la verifica di username funzioni per username vuoto
+     * ritorno false
+     */
+    @Test //annotazione necessaria per eseguire il test
     fun validateUsername_usernameVuoto_returnFalse() {
+        //eseguo validate username con stringa vuota
         val result = ru.validateUsername(
             username = ""
         )
+        //tramite assert mi accerto che il risultato corrisponda a quello aspettato
         assertThat(result).isFalse()
     }
 
-    @Test
-    fun validateRegistration_correctParameters_returnTrue() {
-        val result = ru.validateRegistration(
-            username = "Gianluca",
-            password = "Password1!",
-            passwordConfirm = "Password1!"
-        )
-        assertThat(result).isTrue()
-    }
-
+    /**
+     * Controllo che le password corrispondano
+     * password errate
+     * ritorno atteso false
+     */
     @Test
     fun validateRegistration_wrongPasswords_returnFalse(){
-        val result = ru.validateRegistration(
-            username = "Gianluca",
+        val result = ru.validatePasswordConfirm( //controllo di entrambe le password
             password = "Password1!",
             passwordConfirm = "Pippo123!"
         )
         assertThat(result).isFalse()
+    }
+
+    /**
+     * Controlla che la registrazione vada a buon fine,
+     * username e password corrette,
+     * ritorno atteso true
+     */
+    @Test
+    fun validateRegistration_correctParameters_returnTrue() {
+        val resultUser = ru.validateUsername(username = "Gianluca")
+        val resultPw = ru.validatePassword(password = "Password1!")
+        val resultConfirm = ru.validatePasswordConfirm(password = "Password1!", passwordConfirm = "Password1!")
+        assertThat(resultUser && resultPw && resultConfirm).isTrue()
     }
 }
